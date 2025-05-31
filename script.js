@@ -50,13 +50,17 @@ function smoothRender(newHtml, callback) {
 
   const temp= document.createElement('div');
   temp.innerHTML= newHtml;
+  const newContent= temp.firstElementChild;
+
+  const oldContent= screen.firstElementChild;
 
   screen.classList.remove('fade-in');
   screen.classList.add('fade-out');
 
   setTimeout(() => {
-    screen.innerHTML = '';
-    screen.appendChild(temp.firstElementChild);
+    if (oldContent) screen.removeChild(oldContent);
+    screen.appendChild(newContent);
+
     screen.classList.remove('fade-out');
     screen.classList.add('fade-in');
 
