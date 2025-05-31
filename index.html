@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>갱년기 유형 검사</title>
+    <link rel="stylesheet" href="style.css" />
+    
+</head>
+<body>
+    <div id="app">
+        <button id="backBtn" aria-label="뒤로가기" style="display: block;"></button>
+        <div id="screen"></div>
+    </div>
+   
+
+
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('click', function (e) {
+            const shareBtn = e.target.closest('.share-overlay-btn');
+            if (shareBtn && navigator.share) {
+                navigator.share({
+                    title: '갱년기 유형 검사 결과',
+                    text: '내 결과를 확인해보세요!',
+                    url: window.location.href
+                }).catch(err => {
+                    console.log('공유 실패 또는 취소:', err);
+                });
+            } else if (shareBtn) {
+                alert('이 브라우저에서는 공유 기능이 지원되지 않습니다. 모바일에서 이용해 주세요.');
+            }
+        });
+    </script>
+    
+
+</body>
+</html>
+
+<!--
+<div class="result-image-wrap">
+    <img id="resultImage" src="" alt="결과 이미지" />
+</div>
+-->
+

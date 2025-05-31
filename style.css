@@ -1,0 +1,188 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: #1a1a1a;
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+
+/* 버튼 */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 90px;
+    gap: 10px;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.3);
+    color: blue;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* 화면 */
+.start-screen img,
+.question-screen img {
+    width: 100%;
+    border-radius: 0;
+}
+
+.start-screen,
+.question-screen {
+    text-align: center;
+    position: relative;
+}
+
+.start-transparent-btn {
+    position: absolute;
+    left: 63px;
+    bottom: 180px;
+    width: calc(100% - 127px);
+    height: 48px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.question-screen img {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.transparent-overlay {
+    position: absolute;
+    top: 295px;
+    left: 33px;
+    width: calc(100% - 68px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 10;
+}
+
+.transparent-btn {
+    height: 53px;
+    border-radius: 15px;
+    background: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    font-size: 13.5px;
+    transition: all 0.2s ease;
+    z-index: 10;
+    position: relative;
+}
+
+.transparent-btn.selected {
+    background-color: #1E1E21;
+    color: #FFFFFF;
+}
+
+/* 진행 바 */
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: #76c7c0;
+    transition: width 0.3s ease;
+}
+
+/* 결과 화면 */
+.result-screen {
+    position: relative;
+}
+
+.result-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.share-overlay-btn {
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 263px;
+    height: 53px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+}
+
+#backBtn {
+    position:fixed;
+    top: 25px;
+    left: 70px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    z-index: 9999;
+    cursor: pointer;
+  }
+  
+  /* 화살표나 텍스트 없이 클릭 가능한 영역만 만들기 */
+  #backBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 클릭 영역 시각화용 - 실제로는 이 부분 삭제하거나 투명하게 */
+    background-color: rgba(255, 0, 0, 0); /* 테스트용, 클릭 영역 눈에 띄게 */
+    border-radius: 4px;
+    pointer-events: none; /* 클릭 영역 방해하지 않도록 */
+  }
+  
+  #screen {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .fade-out {
+    opacity: 0;
+  }
+
+  .fade-in {
+    opacity: 1;
+  }
